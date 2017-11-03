@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <el-aside width="300px">
       <img class="asideBg" :src="asideBg" alt="">
     </el-aside>
     <el-container>
@@ -66,6 +66,7 @@ export default {
           alert('submit!')
         } else {
           this.$message.error('请重新填写表单！')
+//          this.$refs.ruleForm.resetFields()
           return false
         }
       })
@@ -75,7 +76,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+/*@import 'Login.css';*/
+
 .el-header, .el-footer {
   background-color: #B3C0D1;
   color: #333;
