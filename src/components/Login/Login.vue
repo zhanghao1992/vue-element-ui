@@ -22,7 +22,7 @@
           </el-col>
         </el-row>
       </el-main>
-      <el-footer>Footer</el-footer>
+      <el-footer>Footer萨达啊啊啊啊啊啊啊啊啊啊啊啊</el-footer>
     </el-container>
   </el-container>
 </template>
