@@ -18,6 +18,7 @@
   </div>
 </template>
 
+<!--<script src="plupload.min.js"></script>-->
 <script type="text/ecmascript-6">
 
 export default {
@@ -40,14 +41,9 @@ export default {
       ]
     }
   },
-  mounted () {
-//    let uploader = new Upload({
-//      browse_button: this.$refs.addPlupload
-//    })
-  },
+  mounted () {},
   methods: {
     addPlupload () {
-      alert(0)
     }
 //    _upload () {
 //      this.$jsonp('', {
@@ -63,7 +59,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style scoped>
 .image {
   height: 200px;
 }

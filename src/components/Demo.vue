@@ -8,7 +8,7 @@
 <script>
 import Upload from '@/components/Upload/Upload'
 import MyUpload from '@/components/MyUpload/MyUpload'
-import ToList from '@/components/ToList/ToList'
+import ToList from '@/components/todoList/todoList'
 
 export default {
   name: 'HelloWorld',
@@ -21,7 +21,6 @@ export default {
     Upload,
     MyUpload,
     ToList
-
   }
 }
 </script>
