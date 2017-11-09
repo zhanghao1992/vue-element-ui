@@ -10,7 +10,7 @@
           <el-col :span="10" :offset="5">
             <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="80px">
               <el-form-item label="用户名" prop="name">
-                <el-input v-model="ruleForm.name"></el-input>
+                <el-input ref="name" v-model="ruleForm.name"></el-input>
               </el-form-item>
               <el-form-item label="密码" prop="password">
                 <el-input type="password" v-model="ruleForm.password"></el-input>
@@ -29,6 +29,7 @@
 
 <script type="text/ecmascript-6">
 import vueValidate from './vueValidate'
+import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -49,9 +50,9 @@ export default {
           {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
         ],
         password: [
-          {required: true, message: '输入密码', trigger: 'blur'},
+          {required: true, message: '输入密码', trigger: 'blur'}
 //          {validator: vueValidate.validatePass, trigger: 'blur'},
-          {pattern: /^1[34578]\d{9}$/, message: '目前只支持中国大陆的手机号码', trigger: 'blur'}
+//          {pattern: /^1[34578]\d{9}$/, message: '目前只支持中国大陆的手机号码', trigger: 'blur'}
         ]
       }
     }
@@ -63,14 +64,17 @@ export default {
     onSubmit () {
       this.$refs.ruleForm.validate((valid) => {
         if (valid) {
-          alert('submit!')
+//          alert('submit!')
+          this.setUser(this.ruleForm)
+          this.$router.push('/haslogin')
         } else {
           this.$message.error('请重新填写表单！')
 //          this.$refs.ruleForm.resetFields()
           return false
         }
       })
-    }
+    },
+    ...mapActions(['setUser', 'exit'])
   }
 }
 </script>

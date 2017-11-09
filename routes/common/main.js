@@ -4,6 +4,26 @@ var axios = require('axios')
 const router = express.Router()
 const upload = multer()
 
+// 获取图形验证码
+router.get('/captcha', function (req, res) {
+  axios({
+    method: 'get',
+    url: 'http://172.21.120.207:18171/apply/createCaptcha'
+  }).then(json => {
+    if (json.data.code === 0) {
+      // req.session.captcha = {value: json.data.response.token, createTime: new Date().getTime()}
+      // res.end(new Buffer(json.data.response.base64String, 'base64').toString('binary'), 'binary')
+      res.send(JSON.stringify({code: 0, response: {base64String: json.data.response.base64String}}))
+      // res.send(json.data.response)
+    } else {
+      res.send('')
+    }
+  }).catch(error => {
+    // console.log(error)
+    res.send(JSON.stringify({code: -1}))
+  })
+})
+
 router.post('/upload', upload.single('file'), function (req, res) {
   axios({
     method: 'post',
