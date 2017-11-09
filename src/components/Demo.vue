@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    jhdjfh
     <upload></upload>
     <!--<my-upload></my-upload>-->
     <captcha></captcha>
