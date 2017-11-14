@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Demo from '@/components/Demo'
-import Login from '@/components/Login/Login'
-import HasLogin from '@/components/HasLogin/HasLogin'
-import todoList from '@/components/todoList/todoList'
+import Demo from '@/views/Demo'
+import Login from '@/views/Login/Login'
+import HasLogin from '@/views/HasLogin/HasLogin'
+import todoList from '@/views/todoList/todoList'
 import store from '../store/store'
 
 Vue.use(Router)

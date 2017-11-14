@@ -4,7 +4,7 @@
       <img class="asideBg" :src="asideBg" alt="">
     </el-aside>
     <el-container>
-      <el-header>Header</el-header>
+      <el-header>---{{captcha.value}}--</el-header>
       <el-main>
         <el-row>
           <el-col :span="10" :offset="5">
@@ -29,7 +29,7 @@
 
 <script type="text/ecmascript-6">
 import vueValidate from './vueValidate'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   data () {
@@ -59,6 +59,9 @@ export default {
   },
   mounted () {
     vueValidate.validateName()
+  },
+  computed: {
+    ...mapGetters(['captcha'])
   },
   methods: {
     onSubmit () {

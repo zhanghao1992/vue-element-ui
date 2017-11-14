@@ -1,33 +1,54 @@
-var express = require('express')
-var multer = require('multer')
-var axios = require('axios')
+let express = require('express')
+let multer = require('multer')
+let axios = require('axios')
 const router = express.Router()
 const upload = multer()
+const javaHTTP = 'http://172.21.120.207:18171'
+
+// 获取图片
+router.post('/user', function (req, res) {
+  console.log(req.body)
+  res.send(JSON.stringify({code: 0}))
+})
 
 // 获取图形验证码
 router.get('/captcha', function (req, res) {
-  axios({
-    method: 'get',
-    url: 'http://172.21.120.207:18171/apply/createCaptcha'
-  }).then(json => {
+  axios.get(`${javaHTTP}/apply/createCaptcha`).then(json => {
     if (json.data.code === 0) {
       // req.session.captcha = {value: json.data.response.token, createTime: new Date().getTime()}
       // res.end(new Buffer(json.data.response.base64String, 'base64').toString('binary'), 'binary')
-      res.send(JSON.stringify({code: 0, response: {base64String: json.data.response.base64String}}))
+      res.json({code: 0, response: {base64String: json.data.response.base64String}})
       // res.send(json.data.response)
     } else {
       res.send('')
     }
-  }).catch(error => {
-    // console.log(error)
-    res.send(JSON.stringify({code: -1}))
+  }).catch(() => {
+    res.json({code: -1})
   })
 })
 
+// 获取图片
+router.get('/getFile', function (req, res) {
+  axios({
+    method: 'get',
+    url: `${javaHTTP}/admin/getFileInfo`,
+    params: req.query
+  }).then(json => {
+    if (json.data.code === 0) {
+      res.json(json.data)
+    } else {
+      res.send('')
+    }
+  }).catch(() => {
+    res.json({code: -1})
+  })
+})
+
+// 上传
 router.post('/upload', upload.single('file'), function (req, res) {
   axios({
     method: 'post',
-    url: 'http://172.21.120.207:18171/admin/uploadFile',
+    url: `${javaHTTP}/admin/uploadFile`,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -48,17 +69,15 @@ router.post('/upload', upload.single('file'), function (req, res) {
     }
   }).then(json => {
     if (json.data.code === 0) {
-      res.send(JSON.stringify({
+      res.json({
         code: 0,
         response: {fileName: json.data.response.fileName, fileMD5: json.data.response.fileMD5}
-      }))
+      })
     } else {
-      console.log(json.data)
-      res.send(JSON.stringify(json.data))
+      res.json(json.data)
     }
-  }).catch(error => {
-    console.log(error)
-    res.send(JSON.stringify({code: -1}))
+  }).catch(() => {
+    res.json({code: -1})
   })
 })
 

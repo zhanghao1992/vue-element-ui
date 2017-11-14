@@ -16,9 +16,12 @@ export default {
   },
   methods: {
     switchCaptcha () {
+//      this.$http.get(`/connect_service/apply/createCaptcha?_=${new Date().getTime()}`).then(json => {
       this.$http.get(`/common/captcha?_=${new Date().getTime()}`).then(json => {
-        console.log(json)
-        this.src = `data:image/png;base64,${json.data.response.base64String}`
+        const res = json.data
+        if (res.code === 0) {
+          this.src = `data:img/png;base64,${res.response.base64String}`
+        }
       })
     }
   }

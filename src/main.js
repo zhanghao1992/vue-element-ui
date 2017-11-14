@@ -13,6 +13,34 @@ import store from './store/store'
 
 Vue.use(Element)
 
+// axios.interceptors.request.use(function (config) {
+//   // console.log(config)
+//   return config
+// }, function (error) {
+//   // Do something with request error
+//   return Promise.reject(error)
+// })
+//
+// axios.interceptors.response.use(function (response) {
+//   // console.log(response)
+//   if (response.config.url.indexOf('createCaptcha')) {
+//     store.commit('SET_CAPTCHA', response.data.response.token)
+//     // Object.assign(response, {xx: 'zz'})
+//     // const res1 = JSON.parse(response.request.response)
+//     // res1.response.token = ''
+//     // const res2 = JSON.stringify(res1)
+//     // console.log(res2)
+//     // console.log(typeof response.request)
+//     // response.request.response = Object.assign(response.request.response, res2)
+//     return response
+//   } else {
+//     return response
+//   }
+// }, function (error) {
+//   // Do something with request error
+//   return Promise.reject(error)
+// })
+
 Vue.prototype.$http = axios
 Vue.use(VueJsonp)
 Vue.use(VueSession)
