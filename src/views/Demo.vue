@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     fn () {
-      this.$refs.input.setCustomValidity('xxxxx')
+      this.$refs.input.setCustomValidity('请填入正确的手机号码！')
     }
   },
   components: {
