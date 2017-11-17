@@ -8,7 +8,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   data () {
@@ -22,10 +22,10 @@ export default {
   },
   methods: {
     loginOut () {
-      this.exit()
+      this.EXIT()
       this.$router.push('/login')
     },
-    ...mapActions(['exit'])
+    ...mapMutations(['EXIT'])
   }
 }
 </script>
