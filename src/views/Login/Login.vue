@@ -4,7 +4,7 @@
       <img class="asideBg" :src="asideBg" alt="">
     </el-aside>
     <el-container>
-      <el-header>---{{captcha.value}}--</el-header>
+      <el-header id="head" ref="head">---{{captcha.value}}--</el-header>
       <el-main>
         <el-row>
           <el-col :span="10" :offset="5">
@@ -59,6 +59,7 @@ export default {
   },
   mounted () {
     vueValidate.validateName()
+//    $('#head').html('张浩')
   },
   computed: {
     ...mapGetters(['captcha'])

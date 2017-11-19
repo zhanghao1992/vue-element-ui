@@ -10,6 +10,7 @@ import VueSession from 'vue-session'
 import Vuex from 'vuex'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/store'
+import 'jquery'
 
 Vue.use(Element)
 
