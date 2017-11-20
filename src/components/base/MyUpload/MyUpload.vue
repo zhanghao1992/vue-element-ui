@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     _getImgUrl (fileMD5) {
-      return this.$http.get('/common/getFile', {
+      return this.$http.get('/node_common/getFile', {
         params: {
           fileMD5: fileMD5,
           _: new Date().getTime()
@@ -64,7 +64,7 @@ export default {
       const uploader = new plupload.Uploader({
         runtimes: 'html5,flash',
         browse_button: 'addPlupload',
-        url: '/common/upload',
+        url: '/node_common/upload',
         file_data_name: 'file',
         filters: {
           max_file_size: '20mb',

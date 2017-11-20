@@ -28,94 +28,103 @@
 </template>
 
 <script type="text/ecmascript-6">
-import vueValidate from './vueValidate'
-import { mapGetters, mapActions } from 'vuex'
+  import vueValidate from './vueValidate'
+  import { mapGetters, mapActions } from 'vuex'
 
-export default {
-  data () {
-//    const checkPass = (rule, value, callback) => {
-//      if (value !== 'sda') {
-//        callback(new Error('年龄不能为空'))
-//      }
-//    }
-    return {
-      asideBg: require('./demo.jpg'),
-      ruleForm: {
-        name: '',
-        password: ''
-      },
-      rules: {
-        name: [
-          {required: true, message: '输入登录名', trigger: 'blur'},
-          {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-        ],
-        password: [
-          {required: true, message: '输入密码', trigger: 'blur'}
+  export default {
+    data () {
+      return {
+        asideBg: require('./demo.jpg'),
+        ruleForm: {
+          name: '',
+          password: ''
+        },
+        rules: {
+          name: [
+            {required: true, message: '输入登录名', trigger: 'blur'},
+            {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+          ],
+          password: [
+            {required: true, message: '输入密码', trigger: 'blur'}
 //          {validator: vueValidate.validatePass, trigger: 'blur'},
 //          {pattern: /^1[34578]\d{9}$/, message: '目前只支持中国大陆的手机号码', trigger: 'blur'}
-        ]
-      }
-    }
-  },
-  mounted () {
-    vueValidate.validateName()
-//    $('#head').html('张浩')
-  },
-  computed: {
-    ...mapGetters(['captcha'])
-  },
-  methods: {
-    onSubmit () {
-      this.$refs.ruleForm.validate((valid) => {
-        if (valid) {
-//          alert('submit!')
-          this.setUser(this.ruleForm)
-          this.$router.push('/haslogin')
-        } else {
-          this.$message.error('请重新填写表单！')
-//          this.$refs.ruleForm.resetFields()
-          return false
+          ]
         }
-      })
+      }
     },
-    ...mapActions(['setUser', 'exit'])
+    mounted () {
+      vueValidate.validateName()
+//    $('#head').html('张浩')
+    },
+    computed: {
+      ...mapGetters(['captcha'])
+    },
+    methods: {
+      onSubmit () {
+        this.$refs.ruleForm.validate((valid) => {
+          if (valid) {
+//            this.$http.post('/node/login', {
+//              ruleForm: this.ruleForm
+//            }).then(json => {
+//              const res = json.data
+//              if (res.code === 0) {
+//                this.setUser(this.ruleForm)
+//                this.$router.push('/haslogin')
+//              }
+//            })
+            this.setUser(this.ruleForm)
+            this.$router.push('/haslogin')
+          } else {
+            this.$message.error('请重新填写表单！')
+//          this.$refs.ruleForm.resetFields()
+            return false
+          }
+        })
+      },
+      ...mapActions(['setUser', 'exit'])
+    }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/*@import 'Login.css';*/
+  /*@import 'Login.css';*/
 
-.el-header, .el-footer {
-  background-color: #B3C0D1;
-  color: #333;
-  text-align: center;
-  line-height: 60px;
-}
-.el-aside {
-  background-color: #D3DCE6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-}
-.el-main {
-  background-color: #E9EEF3;
-  color: #333;
-  text-align: center;
-  line-height: 160px;
-}
-body > .el-container {
-  margin-bottom: 40px;
-}
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
-}
-.asideBg {
-  width: 100%;
-}
+  .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    line-height: 200px;
+  }
+
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+  }
+
+  body > .el-container {
+    margin-bottom: 40px;
+  }
+
+  .el-container:nth-child(5) .el-aside,
+  .el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+  }
+
+  .el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+  }
+
+  .asideBg {
+    width: 100%;
+  }
 </style>

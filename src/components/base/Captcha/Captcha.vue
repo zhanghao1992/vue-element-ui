@@ -8,7 +8,7 @@
 export default {
   data () {
     return {
-      src: `/common/captcha?_=${new Date().getTime()}`
+      src: `/node_common/captcha?_=${new Date().getTime()}`
     }
   },
   created () {
@@ -17,7 +17,7 @@ export default {
   methods: {
     switchCaptcha () {
 //      this.$http.get(`/connect_service/apply/createCaptcha?_=${new Date().getTime()}`).then(json => {
-      this.$http.get(`/common/captcha?_=${new Date().getTime()}`).then(json => {
+      this.$http.get('/node_common/captcha').then(json => {
         const res = json.data
         if (res.code === 0) {
           this.src = `data:img/png;base64,${res.response.base64String}`

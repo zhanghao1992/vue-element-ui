@@ -5,8 +5,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: {
-      name: '',
-      password: ''
+      name: ''
     },
     captcha: {
       value: ''

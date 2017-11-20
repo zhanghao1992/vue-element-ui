@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Demo from '@/views/Demo'
+import Demo from '@/views/Demo'
 import Login from '@/views/Login/Login'
 import HasLogin from '@/views/HasLogin/HasLogin'
 import todoList from '@/views/todoList/todoList'
@@ -12,8 +12,7 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      // component: Demo
-      redirect: '/login'
+      component: Demo
     },
     {
       path: '/login',
@@ -33,8 +32,7 @@ const router = new Router({
   ]
 })
 router.beforeEach((to, from, next) => {
-  // console.log(from)
-  // console.log(to)
+  console.log(to)
   if (to.meta && to.meta.requireAuth) {
     if (store.state.user.name === '') {
       next({path: '/login', component: Login})

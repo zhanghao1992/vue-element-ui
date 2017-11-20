@@ -2,7 +2,7 @@
   <div class="uplaod">
     <el-upload
       class="upload-demo"
-      action="/common/upload"
+      action="/node_common/upload"
       :on-preview="handlePreview"
       :on-remove="handleRemove"
       :file-list="fileList"

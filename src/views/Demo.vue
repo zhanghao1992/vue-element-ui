@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
     <!--<upload></upload>-->
-    <my-upload></my-upload>
+    <!--<my-upload></my-upload>-->
     <captcha></captcha>
-    <form action="">
-      <input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"
-             pattern="^(0|86|17951)?1[0-9]{10}"/>
-    </form>
+    <!--<form action="">-->
+      <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
+             <!--pattern="^(0|86|17951)?1[0-9]{10}"/>-->
+    <!--</form>-->
   </div>
 </template>
 
@@ -24,7 +24,7 @@
       }
     },
     mounted () {
-      this.$http.post('/common/user', {
+      this.$http.post('/node_common/user', {
         name: 'zh'
       }).then(json => {
         const res = json.data

@@ -14,14 +14,15 @@ import 'jquery'
 
 Vue.use(Element)
 
-// axios.interceptors.request.use(function (config) {
-//   // console.log(config)
-//   return config
-// }, function (error) {
-//   // Do something with request error
-//   return Promise.reject(error)
-// })
-//
+axios.interceptors.request.use(config => {
+  console.log('00000000000000')
+  console.log(config)
+  return config
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error)
+})
+
 // axios.interceptors.response.use(function (response) {
 //   // console.log(response)
 //   if (response.config.url.indexOf('createCaptcha')) {

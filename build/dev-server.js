@@ -2,6 +2,7 @@
 require('./check-versions')()
 
 const config = require('../config')
+const index = require('../routes/index.js')
 const common = require('../routes/common/main.js')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
@@ -69,7 +70,8 @@ app.use(bodyParser.json({type: 'application/json'}))
 // serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
-app.use('/common', common)
+app.use('/node', index)
+app.use('/node_common', common)
 const uri = 'http://localhost:' + port
 
 var _resolve
