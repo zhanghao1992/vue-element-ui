@@ -28,7 +28,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import vueValidate from './vueValidate'
+  //  import vueValidate from './vueValidate'
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
@@ -46,14 +46,13 @@
           ],
           password: [
             {required: true, message: '输入密码', trigger: 'blur'}
-//          {validator: vueValidate.validatePass, trigger: 'blur'},
+//            {validator: vueValidate.validatePass, trigger: 'blur'}
 //          {pattern: /^1[34578]\d{9}$/, message: '目前只支持中国大陆的手机号码', trigger: 'blur'}
           ]
         }
       }
     },
     mounted () {
-      vueValidate.validateName()
 //    $('#head').html('张浩')
     },
     computed: {
@@ -63,20 +62,18 @@
       onSubmit () {
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-//            this.$http.post('/node/login', {
-//              ruleForm: this.ruleForm
-//            }).then(json => {
-//              const res = json.data
-//              if (res.code === 0) {
-//                this.setUser(this.ruleForm)
-//                this.$router.push('/haslogin')
-//              }
-//            })
-            this.setUser(this.ruleForm)
-            this.$router.push('/haslogin')
+            this.$http.post('/node/login', {
+              ruleForm: this.ruleForm
+            }).then(json => {
+              const res = json.data
+              if (res.code === 0) {
+                const WL = window.localStorage
+                WL.setItem('userInfo', JSON.stringify(this.ruleForm))
+                console.log(WL.getItem('userInfo'))
+                this.$router.push('/haslogin')
+              }
+            })
           } else {
-            this.$message.error('请重新填写表单！')
-//          this.$refs.ruleForm.resetFields()
             return false
           }
         })

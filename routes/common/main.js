@@ -7,31 +7,30 @@ const javaHTTP = 'http://172.21.120.207:18171'
 
 // 获取图片
 router.post('/user', function (req, res) {
-  console.log(req.body)
   res.send(JSON.stringify({code: 0}))
 })
 
 // 获取图形验证码
 router.get('/captcha', function (req, res) {
-  axios.get(`${javaHTTP}/apply/createCaptcha`).then(json => {
+  console.log(req.session.captcha)
+  axios.get(`${javaHTTP}/apply/createCaptcha?_=${new Date().getTime()}`).then(json => {
     if (json.data.code === 0) {
-      // req.session.captcha = {value: json.data.response.token, createTime: new Date().getTime()}
+      req.session.captcha = {value: json.data.response.token, createTime: new Date().getTime()}
       // res.end(new Buffer(json.data.response.base64String, 'base64').toString('binary'), 'binary')
       res.json({code: 0, response: {base64String: json.data.response.base64String}})
       // res.send(json.data.response)
     } else {
       res.send('')
     }
-  }).catch(() => {
+  }).catch((err) => {
+    console.log(err)
     res.json({code: -1})
   })
 })
 
 // 获取图片
 router.get('/getFile', function (req, res) {
-  axios({
-    method: 'get',
-    url: `${javaHTTP}/admin/getFileInfo`,
+  axios.get(`${javaHTTP}/admin/getFileInfo`, {
     params: req.query
   }).then(json => {
     if (json.data.code === 0) {

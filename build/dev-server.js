@@ -11,6 +11,7 @@ if (!process.env.NODE_ENV) {
 const opn = require('opn')
 const path = require('path')
 const express = require('express')
+const session = require('express-session')
 const webpack = require('webpack')
 const proxyMiddleware = require('http-proxy-middleware')
 const webpackConfig = require('./webpack.dev.conf')
@@ -25,6 +26,16 @@ const autoOpenBrowser = !!config.dev.autoOpenBrowser
 const proxyTable = config.dev.proxyTable
 
 const app = express()
+app.use(session({//todo 参数含义
+  secret: 'asda',
+  name: 'aa',
+  resave: true,//刷新过期时间,
+  rolling: true,//刷新过期时间,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 2
+  },
+}))
 const compiler = webpack(webpackConfig)
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {

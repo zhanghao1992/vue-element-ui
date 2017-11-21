@@ -4,8 +4,8 @@
     <!--<my-upload></my-upload>-->
     <captcha></captcha>
     <!--<form action="">-->
-      <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
-             <!--pattern="^(0|86|17951)?1[0-9]{10}"/>-->
+    <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
+    <!--pattern="^(0|86|17951)?1[0-9]{10}"/>-->
     <!--</form>-->
   </div>
 </template>

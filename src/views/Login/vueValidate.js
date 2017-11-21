@@ -3,6 +3,6 @@ export default {
     console.log(value)
   },
   validateName: () => {
-    console.log('name')
+    // console.log('name')
   }
 }

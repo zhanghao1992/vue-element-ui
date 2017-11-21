@@ -15,8 +15,7 @@ import 'jquery'
 Vue.use(Element)
 
 axios.interceptors.request.use(config => {
-  console.log('00000000000000')
-  console.log(config)
+  // console.log(config)
   return config
 }, function (error) {
   // Do something with request error
