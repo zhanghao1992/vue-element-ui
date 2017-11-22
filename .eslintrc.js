@@ -8,7 +8,8 @@ module.exports = {
   },
   env: {
     browser: true,
-    jquery: true
+    jquery: true,
+    'node': true
   },
   // https://github.com/standard/standard/blob/master/docs/RULES-en.md
   extends: 'standard',
@@ -23,6 +24,8 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    // 关闭强制驼峰命名规则
+    'camelcase': 0
   }
 }

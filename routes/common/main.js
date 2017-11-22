@@ -18,7 +18,6 @@ router.get('/captcha', function (req, res) {
       req.session.captcha = {value: json.data.response.token, createTime: new Date().getTime()}
       // res.end(new Buffer(json.data.response.base64String, 'base64').toString('binary'), 'binary')
       res.json({code: 0, response: {base64String: json.data.response.base64String}})
-      // res.send(json.data.response)
     } else {
       res.send('')
     }
