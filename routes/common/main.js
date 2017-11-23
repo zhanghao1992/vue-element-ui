@@ -3,6 +3,7 @@ let multer = require('multer')
 let axios = require('axios')
 const router = express.Router()
 const upload = multer()
+const NodeRSA = require('node-rsa')
 const javaHTTP = 'http://172.21.120.207:18171'
 
 // 获取图片
@@ -12,12 +13,30 @@ router.post('/user', function (req, res) {
 
 // 获取图形验证码
 router.get('/captcha', function (req, res) {
-  console.log(req.session.captcha)
+  // console.log(req.session.captcha)
   axios.get(`${javaHTTP}/apply/createCaptcha?_=${new Date().getTime()}`).then(json => {
     if (json.data.code === 0) {
-      req.session.captcha = {value: json.data.response.token, createTime: new Date().getTime()}
-      // res.end(new Buffer(json.data.response.base64String, 'base64').toString('binary'), 'binary')
-      res.json({code: 0, response: {base64String: json.data.response.base64String}})
+      req.session.captcha = {
+        value: json.data.response.token,
+        createTime: new Date().getTime(),
+        privateKey: (req.session.captcha && req.session.captcha.privateKey) || '',
+        puplicKey: (req.session.captcha && req.session.captcha.puplicKey) || ''
+      }
+      // 设置公钥私钥
+      if (!req.session.captcha.privateKey) {
+        const key = new NodeRSA({b: 1024}, {signingScheme: 'pkcs1'})
+        const publicDer = key.exportKey('pkcs8-public-der').toString('base64')
+        const privateDer = key.exportKey('pkcs1').toString('base64')
+        req.session.captcha.privateKey = privateDer
+        req.session.captcha.puplicKey = publicDer
+      }
+      res.json({
+        code: 0,
+        response: {
+          base64String: json.data.response.base64String,
+          publicKey: req.session.captcha.puplicKey
+        }
+      })
     } else {
       res.send('')
     }

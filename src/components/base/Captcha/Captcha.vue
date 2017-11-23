@@ -8,7 +8,8 @@
   export default {
     data () {
       return {
-        src: `/node_common/captcha?_=${new Date().getTime()}`
+        src: '',
+        publicKey: ''
       }
     },
     created () {
@@ -25,6 +26,8 @@
           const res = json.data
           if (res.code === 0) {
             this.src = `data:img/png;base64,${res.response.base64String}`
+            this.publicKey = res.response.publicKey
+            this.$emit('setPublicKey', res.response.publicKey)
           }
         })
       }
@@ -35,7 +38,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .captcha {
-    width: 200px;
-    height: 60px;
+    width: 160px;
+    height: 100%;
   }
 </style>

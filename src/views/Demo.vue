@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <div>{{data.name}}</div>
     <!--<upload></upload>-->
     <!--<my-upload></my-upload>-->
     <captcha></captcha>
@@ -20,16 +19,9 @@
   export default {
     name: 'HelloWorld',
     data () {
-      return {
-        data: {
-//          name: 'xx'
-        },
-        value1: 0
-      }
+      return {}
     },
     mounted () {
-//      this.data.name = 'zh'
-//      this.$set(this.data, 'name', 'zh')
       this.$http.post('/node_common/user', {
         name: 'zh'
       }).then(json => {

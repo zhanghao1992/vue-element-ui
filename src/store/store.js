@@ -6,7 +6,9 @@ export default new Vuex.Store({
   state: {
     user: null,
     captcha: {
-      value: ''
+      value: '',
+      puplicKey: '',
+      privateKey: ''
     }
   },
   getters: {
