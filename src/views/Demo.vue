@@ -2,7 +2,7 @@
   <div class="hello">
     <!--<upload></upload>-->
     <!--<my-upload></my-upload>-->
-    <captcha></captcha>
+    <captcha style="height: 60px"></captcha>
     <!--<form action="">-->
     <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
     <!--pattern="^(0|86|17951)?1[0-9]{10}"/>-->
