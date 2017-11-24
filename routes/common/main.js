@@ -1,6 +1,7 @@
 let express = require('express')
 let multer = require('multer')
 let axios = require('axios')
+let vService = require('../../lib/vService')
 const router = express.Router()
 const upload = multer()
 const qs = require('qs')
@@ -45,17 +46,7 @@ router.get('/captcha', function (req, res) {
 
 // 获取图片
 router.get('/getFile', function (req, res) {
-  axios.get(`${javaHTTP}/admin/getFileInfo`, {
-    params: req.query
-  }).then(json => {
-    if (json.data.code === 0) {
-      res.json(json.data)
-    } else {
-      res.send('')
-    }
-  }).catch(() => {
-    res.json({code: -1})
-  })
+  vService.get(req, res, {path: '/admin/getFileInfo'})
 })
 
 // 上传
