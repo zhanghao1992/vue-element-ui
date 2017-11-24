@@ -3,13 +3,10 @@ let multer = require('multer')
 let axios = require('axios')
 const router = express.Router()
 const upload = multer()
+const qs = require('qs')
+
 const NodeRSA = require('node-rsa')
 const javaHTTP = 'http://172.21.120.207:18171'
-
-// 获取图片
-router.post('/user', function (req, res) {
-  res.send(JSON.stringify({code: 0}))
-})
 
 // 获取图形验证码
 router.get('/captcha', function (req, res) {
@@ -63,27 +60,30 @@ router.get('/getFile', function (req, res) {
 
 // 上传
 router.post('/upload', upload.single('file'), function (req, res) {
+  // console.log(req.file)
+  const fileData = {
+    contentType: req.file.mimetype,
+    base64String: req.file.buffer.toString('base64'),
+    fileName: req.file.originalname,
+    suffix: req.file.originalname.substring(req.file.originalname.lastIndexOf('.') + 1),
+    size: req.file.size
+  }
   axios({
     method: 'post',
     url: `${javaHTTP}/admin/uploadFile`,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    transformRequest: [function (data) {
-      // Do whatever you want to transform the data
-      let ret = ''
-      for (let it in data) {
-        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-      }
-      return ret
-    }],
-    data: {
-      contentType: req.file.mimetype,
-      base64String: req.file.buffer.toString('base64'),
-      fileName: req.file.originalname,
-      suffix: req.file.originalname.substring(req.file.originalname.lastIndexOf('.') + 1),
-      size: req.file.size
-    }
+    // 发送请求点对data进行处理qs模块代替
+    // transformRequest: [function (data) {
+    //   // Do whatever you want to transform the data
+    //   let ret = ''
+    //   for (let it in data) {
+    //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+    //   }
+    //   return ret
+    // }],
+    data: qs.stringify(fileData)
   }).then(json => {
     if (json.data.code === 0) {
       res.json({

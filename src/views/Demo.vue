@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!--<upload></upload>-->
-    <!--<my-upload></my-upload>-->
+    <my-upload></my-upload>
     <captcha style="height: 60px"></captcha>
     <!--<form action="">-->
     <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
@@ -17,12 +17,12 @@
   import ToList from '@/views/todoList/todoList'
 
   export default {
-    name: 'HelloWorld',
+    name: '',
     data () {
       return {}
     },
     mounted () {
-      this.$http.post('/node_common/user', {
+      this.$http.post('/node/user', {
         name: 'zh'
       }).then(json => {
         const res = json.data

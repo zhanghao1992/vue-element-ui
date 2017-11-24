@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import Element from 'element-ui'
 import axios from 'axios'
+import qs from 'qs'
 import VueJsonp from 'vue-jsonp'
 import VueSession from 'vue-session'
 import Vuex from 'vuex'
@@ -15,7 +16,21 @@ import 'jquery'
 Vue.use(Element)
 
 axios.interceptors.request.use(config => {
-  // console.log(config)
+  // console.log(config.method)
+  // POST传参序列化
+  if (config.method === 'post') {
+    config.data = qs.stringify(config.data)
+    console.log(config.data)
+  }
+
+  // const permission = false
+  // if (permission) {
+  //   // 验证不通过
+  //   return Promise.reject({
+  //     code: 1,
+  //     message: 'no permission'
+  //   })
+  // }
   return config
 }, function (error) {
   // Do something with request error

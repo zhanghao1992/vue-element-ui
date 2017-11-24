@@ -91,7 +91,6 @@
               if (res.code === 0) {
                 const WL = window.localStorage
                 WL.setItem('userInfo', JSON.stringify(this.ruleForm))
-//                console.log(WL.getItem('userInfo'))
                 this.$router.push('/haslogin')
               } else {
                 this.$notify.error({

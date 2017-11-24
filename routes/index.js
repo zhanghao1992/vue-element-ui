@@ -15,4 +15,10 @@ router.post('/login', function (req, res) {
   }
 })
 
+// 获取图片
+router.post('/user', function (req, res) {
+  console.log(req.body)
+  res.send(JSON.stringify({code: 0}))
+})
+
 module.exports = router
