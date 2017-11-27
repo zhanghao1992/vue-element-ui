@@ -19,7 +19,9 @@
   export default {
     name: '',
     data () {
-      return {}
+      return {
+        name: 'zh'
+      }
     },
     mounted () {
       this.$http.post('/node/user', {
