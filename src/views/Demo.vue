@@ -1,7 +1,24 @@
 <template>
   <div class="hello">
     <!--<upload></upload>-->
-    <my-upload></my-upload>
+    <!--<my-upload></my-upload>-->
+    <div class="list">
+      <table>
+        <thead>
+        <tr>
+          <th>姓名</th>
+          <th>年龄</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(item, index) in listData.list" :key="index">
+          <td>{{ index + 1 }}</td>
+          <td>{{ item.name }}</td>
+        </tr>
+        </tbody>
+      </table>
+      <page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>
+    </div>
     <captcha style="height: 60px"></captcha>
     <!--<form action="">-->
     <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
@@ -13,6 +30,7 @@
 <script>
   import Upload from '@/components/base/Upload/Upload'
   import MyUpload from '@/components/base/MyUpload/MyUpload'
+  import Page from '@/components/base/Page/Page'
   import Captcha from '@/components/base/Captcha/Captcha'
   import ToList from '@/views/todoList/todoList'
 
@@ -20,7 +38,26 @@
     name: '',
     data () {
       return {
-        name: 'zh'
+        name: 'zh',
+        listData: {
+          page: 1,
+          page_size: 3,
+          total: 30,
+          list: [
+            {
+              name: 'zh',
+              age: 20
+            },
+            {
+              name: 'zh',
+              age: 20
+            },
+            {
+              name: 'zh',
+              age: 20
+            }
+          ]
+        }
       }
     },
     mounted () {
@@ -36,11 +73,34 @@
     methods: {
       fn () {
         this.$refs.input.setCustomValidity('请填入正确的手机号码！')
+      },
+      pageClick (page) {
+        console.log(page)
+        this.listData = {
+          page: page,
+          page_size: 3,
+          total: 30,
+          list: [
+            {
+              name: `第${page}页`,
+              age: 20
+            },
+            {
+              name: 'zh0',
+              age: 20
+            },
+            {
+              name: 'zh0',
+              age: 20
+            }
+          ]
+        }
       }
     },
     components: {
       Upload,
       MyUpload,
+      Page,
       Captcha,
       ToList
     }
