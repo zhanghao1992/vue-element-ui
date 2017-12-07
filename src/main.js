@@ -20,7 +20,7 @@ axios.interceptors.request.use(config => {
   // POST传参序列化
   if (config.method === 'post') {
     config.data = qs.stringify(config.data)
-    console.log(config.data)
+    // console.log(config.data)
   }
 
   // const permission = false

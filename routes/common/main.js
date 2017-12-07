@@ -46,7 +46,10 @@ router.get('/captcha', function (req, res) {
 
 // 获取图片
 router.get('/getFile', function (req, res) {
-  vService.get(req, res, {path: '/admin/getFileInfo'})
+  vService.get(req, res, {path: '/admin/getFileInfo'}, function (json) {
+    // console.log('获取图片成功！')
+    res.send(json)
+  })
 })
 
 // 上传
@@ -59,34 +62,47 @@ router.post('/upload', upload.single('file'), function (req, res) {
     suffix: req.file.originalname.substring(req.file.originalname.lastIndexOf('.') + 1),
     size: req.file.size
   }
-  axios({
-    method: 'post',
-    url: `${javaHTTP}/admin/uploadFile`,
+  vService.post(req, res, {
+    path: '/admin/uploadFile',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
-    // 发送请求点对data进行处理qs模块代替
-    // transformRequest: [function (data) {
-    //   // Do whatever you want to transform the data
-    //   let ret = ''
-    //   for (let it in data) {
-    //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-    //   }
-    //   return ret
-    // }],
-    data: qs.stringify(fileData)
-  }).then(json => {
-    if (json.data.code === 0) {
-      res.json({
-        code: 0,
-        response: {fileName: json.data.response.fileName, fileMD5: json.data.response.fileMD5}
-      })
-    } else {
-      res.json(json.data)
-    }
-  }).catch(() => {
-    res.json({code: -1})
+    data: fileData
+  }, function (json) {
+    // console.log('上传图片成功！')
+    res.json({
+      code: 0,
+      response: {fileName: json.response.fileName, fileMD5: json.response.fileMD5}
+    })
   })
+  // axios({
+  //   method: 'post',
+  //   url: `${javaHTTP}/admin/uploadFile`,
+  //   headers: {
+  //     'Content-Type': 'application/x-www-form-urlencoded'
+  //   },
+  //   // 发送请求点对data进行处理qs模块代替
+  //   transformRequest: [function (data) {
+  //     // Do whatever you want to transform the data
+  //     let ret = ''
+  //     for (let it in data) {
+  //       ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+  //     }
+  //     return ret
+  //   }],
+  //   data: qs.stringify(fileData)
+  // }).then(json => {
+  //   if (json.data.code === 0) {
+  //     res.json({
+  //       code: 0,
+  //       response: {fileName: json.data.response.fileName, fileMD5: json.data.response.fileMD5}
+  //     })
+  //   } else {
+  //     res.json(json.data)
+  //   }
+  // }).catch(() => {
+  //   res.json({code: -1})
+  // })
 })
 
 module.exports = router

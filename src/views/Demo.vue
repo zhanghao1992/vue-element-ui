@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!--<upload></upload>-->
-    <!--<my-upload></my-upload>-->
+    <my-upload></my-upload>
 
     <table>
       <slot name="t-head">
