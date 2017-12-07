@@ -2,23 +2,27 @@
   <div class="hello">
     <!--<upload></upload>-->
     <!--<my-upload></my-upload>-->
-    <div class="list">
-      <table>
+
+    <table>
+      <slot name="t-head">
         <thead>
         <tr>
           <th>姓名</th>
           <th>年龄</th>
         </tr>
         </thead>
+      </slot>
+      <slot name="t-body">
         <tbody>
         <tr v-for="(item, index) in listData.list" :key="index">
           <td>{{ index + 1 }}</td>
           <td>{{ item.name }}</td>
         </tr>
         </tbody>
-      </table>
-      <page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>
-    </div>
+      </slot>
+    </table>
+    <page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>
+    <!--</div>-->
     <captcha style="height: 60px"></captcha>
     <!--<form action="">-->
     <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
@@ -30,6 +34,7 @@
 <script>
   import Upload from '@/components/base/Upload/Upload'
   import MyUpload from '@/components/base/MyUpload/MyUpload'
+  import MyTable from '@/components/base/MyTable/MyTable'
   import Page from '@/components/base/Page/Page'
   import Captcha from '@/components/base/Captcha/Captcha'
   import ToList from '@/views/todoList/todoList'
@@ -100,6 +105,7 @@
     components: {
       Upload,
       MyUpload,
+      MyTable,
       Page,
       Captcha,
       ToList
@@ -108,6 +114,6 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style scoped lang="less">
+@import "../assets/css/table.less";
 </style>
