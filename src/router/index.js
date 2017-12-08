@@ -5,6 +5,7 @@ import Demo from '@/views/Demo'
 import Login from '@/views/Login/Login'
 import HasLogin from '@/views/HasLogin/HasLogin'
 import todoList from '@/views/todoList/todoList'
+import Echarts from '@/views/Echarts/Echarts'
 import store from '../store/store'
 
 Vue.use(Router)
@@ -30,6 +31,10 @@ const router = new Router({
         requireAuth: true
       },
       component: HasLogin
+    },
+    {
+      path: '/echarts',
+      component: Echarts
     }
   ]
 })

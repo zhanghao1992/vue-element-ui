@@ -64,9 +64,9 @@ router.post('/upload', upload.single('file'), function (req, res) {
   }
   vService.post(req, res, {
     path: '/admin/uploadFile',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
+    // headers: {
+    //   'Content-Type': 'application/x-www-form-urlencoded'
+    // },
     data: fileData
   }, function (json) {
     // console.log('上传图片成功！')

@@ -15,36 +15,35 @@
 </template>
 
 <script type="text/ecmascript-6">
-export default {
-  data () {
-    return {
-      fileList: [{
-        name: 'food.jpeg',
-        url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-      }, {
-        name: 'food2.jpeg',
-        url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-      }]
-    }
-  },
-  methods: {
-    handleRemove (file, fileList) {
-      console.log(file, fileList)
+  export default {
+    data () {
+      return {
+        fileList: [
+          {
+            name: 'food.jpeg',
+            url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
+          }
+        ]
+      }
     },
-    handlePreview (file) {
-      console.log(file)
-    },
-    handleSuccess (response, file, fileList) {
-      console.log(response)
-      console.log(file)
-      console.log(fileList)
+    methods: {
+      handleRemove (file, fileList) {
+        console.log(file, fileList)
+      },
+      handlePreview (file) {
+        console.log(file)
+      },
+      handleSuccess (response, file, fileList) {
+        console.log(response)
+        console.log(file)
+        console.log(fileList)
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.image {
-}
+  .image {
+  }
 </style>
