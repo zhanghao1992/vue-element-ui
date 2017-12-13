@@ -22,20 +22,18 @@
     <!--</slot>-->
     <!--</table>-->
     <my-table :tableData="listData.list">
-      <slot slot="t-head">
-        <thead>
-        <tr>
-          <th>姓名0</th>
-          <th>年龄0</th>
-        </tr>
-        </thead>
-      </slot>
-      <template scope="scope">
+      <thead slot="t-head">
+      <tr>
+        <th>姓名0</th>
+        <th>年龄0</th>
+      </tr>
+      </thead>
+      <tr slot-scope="scope">
         <td>数据：{{scope}}</td>
         <td>索引：{{scope.$index}}</td>
         <td>姓名：{{scope.row.name}}</td>
         <td>性别：{{scope.row.age}}</td>
-      </template>
+      </tr>
     </my-table>
     <page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>
     <captcha style="height: 60px"></captcha>

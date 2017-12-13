@@ -10,12 +10,10 @@
         </thead>
       </slot>
       <tbody>
-      <tr v-for="(item, index) in tableData" :key="index">
-        <slot :row="item" :$index="index">
-          <td>{{item.name}}</td>
-          <td>{{item.age}}</td>
-        </slot>
-      </tr>
+      <slot v-for="(item, index) in tableData" :row="item" :$index="index">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+      </slot>
       </tbody>
     </table>
   </div>
