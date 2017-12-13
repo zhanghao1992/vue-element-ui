@@ -9,14 +9,14 @@
         </tr>
         </thead>
       </slot>
-      <slot name="t-body">
-        <tbody>
-        <tr v-for="(item, index) in tableData" :key="index">
-          <td>{{ index + 1 }}</td>
-          <td>{{ item.name }}</td>
-        </tr>
-        </tbody>
-      </slot>
+      <tbody>
+      <tr v-for="(item, index) in tableData" :key="index">
+        <slot :row="item" :$index="index">
+          <td>{{item.name}}</td>
+          <td>{{item.age}}</td>
+        </slot>
+      </tr>
+      </tbody>
     </table>
   </div>
 </template>

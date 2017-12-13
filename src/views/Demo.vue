@@ -3,31 +3,42 @@
     <!--<upload></upload>-->
     <my-upload></my-upload>
 
-    <table>
-      <slot name="t-head">
+    <!--<table>-->
+    <!--<slot name="t-head">-->
+    <!--<thead>-->
+    <!--<tr>-->
+    <!--<th>姓名</th>-->
+    <!--<th>年龄</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--</slot>-->
+    <!--<slot name="t-body">-->
+    <!--<tbody>-->
+    <!--<tr v-for="(item, index) in listData.list" :key="index">-->
+    <!--<td>{{ index + 1 }}</td>-->
+    <!--<td>{{ item.name }}</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</slot>-->
+    <!--</table>-->
+    <my-table :tableData="listData.list">
+      <slot slot="t-head">
         <thead>
         <tr>
-          <th>姓名</th>
-          <th>年龄</th>
+          <th>姓名0</th>
+          <th>年龄0</th>
         </tr>
         </thead>
       </slot>
-      <slot name="t-body">
-        <tbody>
-        <tr v-for="(item, index) in listData.list" :key="index">
-          <td>{{ index + 1 }}</td>
-          <td>{{ item.name }}</td>
-        </tr>
-        </tbody>
-      </slot>
-    </table>
+      <template scope="scope">
+        <td>数据：{{scope}}</td>
+        <td>索引：{{scope.$index}}</td>
+        <td>姓名：{{scope.row.name}}</td>
+        <td>性别：{{scope.row.age}}</td>
+      </template>
+    </my-table>
     <page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>
-    <!--</div>-->
     <captcha style="height: 60px"></captcha>
-    <!--<form action="">-->
-    <!--<input ref="input" type="text" @invalid="fn" oninvalid="setCustomValidity('sdyuas')"-->
-    <!--pattern="^(0|86|17951)?1[0-9]{10}"/>-->
-    <!--</form>-->
   </div>
 </template>
 
@@ -115,5 +126,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-@import "../assets/css/table.less";
+  @import "../assets/css/table.less";
 </style>
