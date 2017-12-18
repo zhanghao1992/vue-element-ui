@@ -12,10 +12,10 @@ const javaHTTP = 'http://172.21.120.207:18171'
 // 获取图形验证码
 router.get('/captcha', function (req, res) {
   // console.log(req.session.captcha)
-  axios.get(`${javaHTTP}/apply/createCaptcha?_=${new Date().getTime()}`).then(json => {
-    if (json.data.code === 0) {
+  vService.get(req, res, {path: `/apply/createCaptcha?_=${new Date().getTime()}`}, function (json) {
+    if (json.code === 0) {
       req.session.captcha = {
-        value: json.data.response.token,
+        value: json.response.token,
         createTime: new Date().getTime(),
         privateKey: (req.session.captcha && req.session.captcha.privateKey) || '',
         puplicKey: (req.session.captcha && req.session.captcha.puplicKey) || ''
@@ -31,16 +31,13 @@ router.get('/captcha', function (req, res) {
       res.json({
         code: 0,
         response: {
-          base64String: json.data.response.base64String,
+          base64String: json.response.base64String,
           publicKey: req.session.captcha.puplicKey
         }
       })
     } else {
-      res.send('')
+      res.json(json)
     }
-  }).catch((err) => {
-    console.log(err)
-    res.json({code: -1})
   })
 })
 

@@ -11,8 +11,10 @@
       </slot>
       <tbody>
       <slot v-for="(item, index) in tableData" :row="item" :$index="index">
-        <td>{{item.name}}</td>
-        <td>{{item.age}}</td>
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.age}}</td>
+        </tr>
       </slot>
       </tbody>
     </table>
