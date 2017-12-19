@@ -6,6 +6,7 @@ import Login from '@/views/Login/Login'
 import HasLogin from '@/views/HasLogin/HasLogin'
 import todoList from '@/views/todoList/todoList'
 import Echarts from '@/views/Echarts/Echarts'
+import Sass from '@/views/Sass/Sass'
 import store from '../store/store'
 
 Vue.use(Router)
@@ -35,6 +36,10 @@ const router = new Router({
     {
       path: '/echarts',
       component: Echarts
+    },
+    {
+      path: '/sass',
+      component: Sass
     }
   ]
 })

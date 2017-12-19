@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!--<upload></upload>-->
-    <my-upload></my-upload>
+    <!--<my-upload></my-upload>-->
     <my-table :tableData="listData.list">
       <thead slot="t-head">
       <tr>
@@ -99,6 +99,3 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
-  @import "../assets/css/table.less";
-</style>

@@ -1,0 +1,5 @@
+$bg: #f60;
+$r: 64;
+@function px-rem($n) {
+  @return $n / $r;
+}
