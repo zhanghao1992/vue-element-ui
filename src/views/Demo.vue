@@ -5,15 +5,16 @@
     <my-table :tableData="listData.list">
       <thead slot="t-head">
       <tr>
+        <th>索引</th>
         <th>姓名0</th>
         <th>年龄0</th>
       </tr>
       </thead>
-      <!--<tr slot-scope="scope">-->
-      <!--<td>索引：{{scope.$index}}</td>-->
-      <!--<td>姓名：{{scope.row.name}}</td>-->
-      <!--<td>性别：{{scope.row.age}}</td>-->
-      <!--</tr>-->
+      <tr slot-scope="scope">
+        <td>index-{{scope.$index}}</td>
+        <td>name-{{scope.row.name}}</td>
+        <td>age-{{scope.row.age}}</td>
+      </tr>
     </my-table>
     <page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>
     <captcha style="height: 60px"></captcha>
