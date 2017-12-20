@@ -1,5 +1,5 @@
 <template>
-  <div class="test"></div>
+  <div class="test">sass</div>
 </template>
 
 <script>
@@ -14,11 +14,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  @import '../../assets/scss/common';
+  @import "../../assets/scss/common";
 
+  $bg: red;
   .test {
-    height: 100px;
-    width: px-rem(640rem);
     background-color: $bg;
   }
 </style>
