@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 var captcha = require('../lib/captcha')
 let session = require('../lib/session')
-// let vService = require('../lib/vService')
+let vService = require('../lib/vService')
 // var store = require('../src/store/store')
 
 // 登录
@@ -43,4 +43,14 @@ router.post('/user', function (req, res) {
   res.send(JSON.stringify({code: 0}))
 })
 
+// 获取商品列表
+router.get('/product/getProductList', function (req, res) {
+  vService.post(req, res, {
+    url: 'http://172.21.122.192:17076',
+    path: '/product/getProductList'
+  }, function (json) {
+    console.log(json)
+    res.json(json)
+  })
+})
 module.exports = router

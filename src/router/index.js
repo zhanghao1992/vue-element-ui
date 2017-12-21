@@ -48,9 +48,9 @@ const router = new Router({
     },
     {
       path: '/shop',
-      meta: {
-        requireAuth: true
-      },
+      // meta: {
+      //   requireAuth: true
+      // },
       component: Shop
     }
   ]

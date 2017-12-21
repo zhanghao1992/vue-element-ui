@@ -4,12 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
-    user: null,
-    captcha: {
-      value: '',
-      puplicKey: '',
-      privateKey: ''
-    }
+    user: null
   },
   getters: {
     user: state => state.user,
@@ -18,9 +13,6 @@ export default new Vuex.Store({
   mutations: {
     SET_USER: (state, user) => {
       state.user = user
-    },
-    SET_CAPTCHA: (state, value) => {
-      state.captcha.value = value
     },
     EXIT: (state) => {
       state.user = null
