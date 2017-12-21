@@ -62,6 +62,10 @@
 
         }
       })
+
+      this.$http.post('/news/index', {}).then(json => {
+        console.log(json.data)
+      })
     },
     methods: {
       fn () {

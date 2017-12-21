@@ -16,8 +16,14 @@
 <style scoped lang="scss">
   @import "../../assets/scss/common";
 
+  $color: (light:#fff, dark:#000);
   $bg: red;
+  @function color($key) {
+    @return map_get($color, $key);
+  }
+
   .test {
     background-color: $bg;
+    color: color(dark);
   }
 </style>
