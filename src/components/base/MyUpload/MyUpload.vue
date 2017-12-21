@@ -47,10 +47,6 @@
       }
       this._upladerInit()
     },
-    watch: {
-      fileArr () {
-      }
-    },
     methods: {
       _getImgUrl (fileMD5) {
         return this.$http.get('/node_common/getFile', {

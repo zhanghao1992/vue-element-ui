@@ -12,9 +12,9 @@ import Vuex from 'vuex'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/store'
 import 'jquery'
-import mock from './mock'
 
 Vue.use(Element)
+
 axios.interceptors.request.use(config => {
   // POST传参序列化
   if (config.method === 'post') {
@@ -36,7 +36,6 @@ Vue.use(VueJsonp)
 Vue.use(VueSession)
 Vue.use(Vuex)
 Vue.config.productionTip = false
-Vue.use(mock)
 
 /* eslint-disable no-new */
 new Vue({
@@ -45,8 +44,4 @@ new Vue({
   store,
   template: '<App/>',
   components: {App}
-})
-// 这里我添加了额一个常用的时间整理过滤器 getYMD
-Vue.filter('getYMD', function (input) {
-  return input.split(' ')[0]
 })

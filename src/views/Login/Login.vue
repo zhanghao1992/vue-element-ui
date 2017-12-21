@@ -82,15 +82,13 @@
             const publicKey = this.publicKey
             encrypt.setPublicKey(publicKey)
             this.ruleForm.encryptedCaptcha = encrypt.encrypt(captchaValue)
-            console.log(encrypt.encrypt(captchaValue))
-
             this.$http.post('/node/login', {
               ruleForm: this.ruleForm
             }).then(json => {
               const res = json.data
               if (res.code === 0) {
-                const WL = window.localStorage
-                WL.setItem('userInfo', JSON.stringify(this.ruleForm))
+//                const WL = window.localStorage
+//                WL.setItem('userInfo', JSON.stringify(this.ruleForm))
                 this.$router.push('/haslogin')
               } else {
                 this.$notify.error({

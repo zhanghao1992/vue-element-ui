@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!--<upload></upload>-->
-    <!--<my-upload></my-upload>-->
+    <my-upload></my-upload>
     <my-table :tableData="listData.list">
       <thead slot="t-head">
       <tr>
@@ -55,16 +55,12 @@
     },
     mounted () {
       this.$http.post('/node/user', {
-        name: 'zh'
+//        name: 'zh'
       }).then(json => {
         const res = json.data
         if (res.code === 0) {
 
         }
-      })
-
-      this.$http.post('/news/index', {}).then(json => {
-        console.log(json.data)
       })
     },
     methods: {

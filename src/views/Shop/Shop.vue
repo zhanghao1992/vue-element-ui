@@ -22,12 +22,9 @@
     },
     methods: {
       loginOut () {
-        this.$http.post('/node/exit').then((json) => {
-          if (json.data.code === 0) {
-            this.EXIT()
-            this.$router.push('/login')
-          }
-        })
+        const WL = window.localStorage
+        WL.removeItem('userInfo')
+        this.$router.push('/login')
       },
       ...mapMutations(['EXIT'])
     }

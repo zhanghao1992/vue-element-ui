@@ -23,10 +23,7 @@ export default new Vuex.Store({
       state.captcha.value = value
     },
     EXIT: (state) => {
-      state.user = {
-        name: '',
-        password: ''
-      }
+      state.user = null
     }
   },
   actions: {

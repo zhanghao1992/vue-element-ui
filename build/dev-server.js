@@ -24,7 +24,8 @@ const autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
 const proxyTable = config.dev.proxyTable
-
+global.projectRoot = __dirname;
+global.userSessionList = {};
 const app = express()
 app.use(session({//todo 参数含义
   secret: 'asda',
