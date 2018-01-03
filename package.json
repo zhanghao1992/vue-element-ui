@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "body-parser": "^1.18.2",
+    "connect-history-api-fallback": "^1.5.0",
     "echarts": "^3.8.5",
     "element-ui": "^2.0.2",
     "express-session": "^1.15.6",
@@ -25,6 +26,7 @@
     "node-rsa": "^0.4.2",
     "node-sass": "^4.7.2",
     "plupload": "^2.3.4",
+    "request": "^2.83.0",
     "safe-buffer": "^5.1.1",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",

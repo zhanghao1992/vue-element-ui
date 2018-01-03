@@ -19,9 +19,9 @@
       switchCaptcha () {
 //      this.$http.get(`/connect_service/apply/createCaptcha?_=${new Date().getTime()}`).then(json => {
         this.$http.get(`/node_common/captcha?_=${new Date().getTime()}`, {
-          params: {
-            name: 'zh'
-          }
+//          params: {
+//            name: 'zh'
+//          }
         }).then(json => {
           const res = json.data
           if (res.code === 0) {

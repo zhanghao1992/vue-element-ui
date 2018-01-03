@@ -12,9 +12,11 @@ import Vuex from 'vuex'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/store'
 import 'jquery'
+import Toast from './components/base/Toast/toast'
+import './components/base/Toast/toast.css'
 
 Vue.use(Element)
-
+Vue.use(Toast)
 axios.interceptors.request.use(config => {
   // POST传参序列化
   if (config.method === 'post') {

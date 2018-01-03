@@ -13,7 +13,7 @@ const javaHTTP = 'http://172.21.120.207:18171'
 // 获取图形验证码
 router.get('/captcha', function (req, res) {
   // console.log(req.session.captcha)
-  vService.get(req, res, {path: `/apply/createCaptcha?_=${new Date().getTime()}`}, function (json) {
+  vService.post(req, res, {path: `/apply/createCaptcha?_=${new Date().getTime()}`}, function (json) {
     if (json.code === 0) {
       req.session.captcha = {
         value: json.response.token,

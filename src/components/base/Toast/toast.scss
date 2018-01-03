@@ -1,0 +1,14 @@
+.vue-toast {
+  background-color: #8c939d;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+  .success {
+    color: #5daf34;
+  }
+  .danger {
+    color: #ff6600;
+  }
+}

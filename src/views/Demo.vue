@@ -1,23 +1,23 @@
 <template>
   <div class="hello">
     <!--<upload></upload>-->
-    <my-upload></my-upload>
-    <my-table :tableData="listData.list">
-      <thead slot="t-head">
-      <tr>
-        <th>索引</th>
-        <th>姓名0</th>
-        <th>年龄0</th>
-      </tr>
-      </thead>
-      <tr slot-scope="scope">
-        <td>index-{{scope.$index}}</td>
-        <td>name-{{scope.row.name}}</td>
-        <td>age-{{scope.row.age}}</td>
-      </tr>
-    </my-table>
-    <page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>
-    <captcha style="height: 60px"></captcha>
+    <!--<my-upload></my-upload>-->
+    <!--<my-table :tableData="listData.list">-->
+    <!--<thead slot="t-head">-->
+    <!--<tr>-->
+    <!--<th>索引</th>-->
+    <!--<th>姓名0</th>-->
+    <!--<th>年龄0</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+    <!--<tr slot-scope="scope">-->
+    <!--<td>index-{{scope.$index}}</td>-->
+    <!--<td>name-{{scope.row.name}}</td>-->
+    <!--<td>age-{{scope.row.age}}</td>-->
+    <!--</tr>-->
+    <!--</my-table>-->
+    <!--<page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>-->
+    <!--<captcha style="height: 60px"></captcha>-->
   </div>
 </template>
 
@@ -54,6 +54,10 @@
       }
     },
     mounted () {
+      this.$toast({
+        type: 'danger',
+        tip: 'asdas'
+      })
       this.$http.post('/node/user', {
 //        name: 'zh'
       }).then(json => {
