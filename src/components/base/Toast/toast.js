@@ -22,7 +22,9 @@ Toast.install = (Vue, options) => {
           tip: opt.tip
         }
       },
-      template: `<div class="vue-toast"><p :class="this.type">{{this.tip}}</p></div>`
+      template: `<div class="vue-toast">
+                  <p :class="this.type">{{this.tip}}</p>
+                </div>`
     })
     const toastVM = new ToastTpl()
     let tpl = toastVM.$mount().$el

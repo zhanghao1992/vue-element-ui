@@ -99,6 +99,18 @@
       MyTable,
       Page,
       Captcha
+    },
+    beforeRouteEnter (to, from, next) {
+      console.log('beforeRouteEnter')
+      next()
+    },
+    beforeRouteLeave (to, from, next) {
+      console.log('beforeRouteLeave')
+      next()
+    },
+    beforeRouteUpdate (to, from, next) {
+      console.log('beforeRouteUpdate')
+      next()
     }
   }
 </script>
