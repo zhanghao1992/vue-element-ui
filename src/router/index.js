@@ -22,7 +22,12 @@ const router = new Router({
     },
     {
       path: '/login',
-      component: Login
+      component: Login,
+      beforeEnter (to, from, next) {
+        // console.log(to)
+        // console.log(from)
+        next()
+      }
     },
     {
       path: '/todolist',
