@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    <!--<upload></upload>-->
-    <!--<my-upload></my-upload>-->
+    <my-upload></my-upload>
     <!--<my-table :tableData="listData.list">-->
     <!--<thead slot="t-head">-->
     <!--<tr>-->
@@ -54,10 +53,10 @@
       }
     },
     mounted () {
-      this.$toast({
-        type: 'danger',
-        tip: 'asdas'
-      })
+      // this.$toast({
+      //   type: 'danger',
+      //   tip: 'asdas'
+      // })
       this.$http.post('/node/user', {
 //        name: 'zh'
       }).then(json => {

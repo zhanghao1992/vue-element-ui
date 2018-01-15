@@ -5,9 +5,10 @@ import App from './App'
 import router from './router'
 import Element from 'element-ui'
 import axios from 'axios'
+import VueAxios from 'vue-axios'
 import qs from 'qs'
-import VueJsonp from 'vue-jsonp'
-import VueSession from 'vue-session'
+// import VueJsonp from 'vue-jsonp'
+// import VueSession from 'vue-session'
 import Vuex from 'vuex'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store/store'
@@ -33,9 +34,9 @@ axios.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
-Vue.prototype.$http = axios
-Vue.use(VueJsonp)
-Vue.use(VueSession)
+Vue.use(VueAxios, axios)
+// Vue.use(VueJsonp)
+// Vue.use(VueSession)
 Vue.use(Vuex)
 Vue.config.productionTip = false
 
