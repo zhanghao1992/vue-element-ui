@@ -9,6 +9,7 @@ import Echarts from '@/views/Echarts/Echarts'
 import Sass from '@/views/Sass/Sass'
 import Mock from '@/views/Mock/Mock'
 import Shop from '@/views/Shop/Shop'
+import noFound from '@/views/404/404'
 import store from '../store/store'
 
 Vue.use(Router)
@@ -16,6 +17,10 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   routes: [
+    {
+      path: '*',
+      component: noFound
+    },
     {
       path: '/',
       component: Demo

@@ -29,13 +29,14 @@ router.get('/captcha', function (req, res) {
         req.session.captcha.privateKey = privateDer
         req.session.captcha.puplicKey = publicDer
       }
-      res.json({
-        code: 0,
-        response: {
-          base64String: json.response.base64String,
-          publicKey: req.session.captcha.puplicKey
-        }
-      })
+      // res.json({
+      //   code: 0,
+      //   response: {
+      //     base64String: json.response.base64String,
+      //     publicKey: req.session.captcha.puplicKey
+      //   }
+      // })
+      res.end(new Buffer(json.response.base64String, 'base64').toString('binary'), 'binary')
     } else {
       res.json(json)
     }

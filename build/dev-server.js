@@ -72,6 +72,8 @@ Object.keys(proxyTable).forEach(function (context) {
 })
 
 // handle fallback for HTML5 history API
+app.use('/node', index)
+app.use('/node_common', common)
 app.use(require('connect-history-api-fallback')())
 
 // serve webpack bundle output
@@ -82,8 +84,6 @@ app.use(bodyParser.json({type: 'application/json'}))
 // serve pure static assets
 const staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
-app.use('/node', index)
-app.use('/node_common', common)
 const uri = 'http://localhost:' + port
 
 var _resolve

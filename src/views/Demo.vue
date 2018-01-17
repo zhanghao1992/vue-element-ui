@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <my-upload></my-upload>
+    <!--<my-upload></my-upload>-->
     <!--<my-table :tableData="listData.list">-->
     <!--<thead slot="t-head">-->
     <!--<tr>-->
@@ -16,7 +16,7 @@
     <!--</tr>-->
     <!--</my-table>-->
     <!--<page :page="listData.page" :page_size="listData.page_size" :total="listData.total" @tabPage="pageClick"></page>-->
-    <!--<captcha style="height: 60px"></captcha>-->
+    <captcha style="height: 60px"></captcha>
   </div>
 </template>
 
