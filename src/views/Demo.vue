@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <!--<my-upload></my-upload>-->
+    <my-upload></my-upload>
     <!--<my-table :tableData="listData.list">-->
     <!--<thead slot="t-head">-->
     <!--<tr>-->

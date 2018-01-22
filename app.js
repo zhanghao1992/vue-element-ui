@@ -2,6 +2,7 @@ const express = require('express')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session)
 const proxy = require('http-proxy-middleware')
+var bodyParser = require('body-parser')
 const config = {
   port: '9085',
   redis: false
@@ -52,9 +53,10 @@ if (!config.redis) {
   }))
 }
 
-var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json({type: 'application/json'}))
+app.use('/node', index)
+app.use('/node_common', common)
 app.use(history({
   rewrites: [
     {
@@ -68,8 +70,6 @@ router.get('/', function (req, res, next) {
   req.url = 'index.html'
   next()
 })
-app.use('/node', index)
-app.use('/node_common', common)
 app.use(router)
 
 // 跨域代理
